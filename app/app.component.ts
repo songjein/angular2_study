@@ -99,7 +99,7 @@ export class AppComponent  {
 		//this.heroes = this.heroService.getHeroes();	
 		// Our callback sets the component's heroes property to the array
 		// of heroes returned by the service.
-		this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+		this.heroService.getHeroesSlowly().then(heroes => this.heroes = heroes);
 	}
 
 	ngOnInit(): void {

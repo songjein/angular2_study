@@ -13,6 +13,13 @@ export class HeroService {
 	getHeroes(): Promise<Hero[]> {
 		return Promise.resolve(HEROES);
 	}
+
+	getHeroesSlowly(): Promise<Hero[]> {
+		return new Promise(resolve => {
+			// simulate server latency with 2s delay
+			setTimeout(() => resolve(this.getHeroes()), 2000);
+		});
+	}
 }
 
 /*
