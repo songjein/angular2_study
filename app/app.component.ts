@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-
-export class Hero {
-	id: number;
-	name: string;
-}
+import { Hero } from './hero';
 
 // this data will be gotten from the web server
 const HEROES: Hero[] = [
@@ -29,15 +25,7 @@ const HEROES: Hero[] = [
 				<span class="badge">{{hero.id}}</span>{{hero.name}}
 			</li>
 		</ul>
-
-		<div *ngIf="selectedHero">
-			<h2>{{selectedHero.name}} details!!</h2>
-			<div><label>id: </label>{{selectedHero.id}}</div>
-			<div>
-				<label>name: </label>
-				<input [(ngModel)]="selectedHero.name" placeholder="name"/>
-			</div>
-		</div>
+		<my-hero-detail [hero]="selectedHero"></my-hero-detail>
 	`,
 	styles: [`
 		.selected {
@@ -101,9 +89,12 @@ export class AppComponent  {
 }
 
 /*
-	Our Tour of Heroes now display a list of selectable heroes
+	We created a reusable component
 
-	We added the ability to select a hero and show the hero's details
+	We learned how to make a component accept input
 
-	We learned how th use the built-in directives ngIf and ngFor in a component's template
+	We learned to declare the application directives we need in an Angular module.
+	We list the directives in the NgModule decorators's declarations array
+
+	We learned to bind a parent component to a child component
 */
