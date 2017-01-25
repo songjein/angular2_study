@@ -10,6 +10,7 @@ import { HEROES } from './mock-heroes';
 **/
 @Injectable()
 export class HeroService {
+
 	getHeroes(): Promise<Hero[]> {
 		return Promise.resolve(HEROES);
 	}
@@ -20,6 +21,11 @@ export class HeroService {
 			setTimeout(() => resolve(this.getHeroes()), 2000);
 		});
 	}
+
+	getHero(id: number): Promise<Hero> {
+		return this.getHeroes()
+			.then(heroes => heroes.find(hero => hero.id === id));
+	}
 }
 
 /*
@@ -28,4 +34,6 @@ export class HeroService {
 * 
 * Although the implementation is changed, We don't need to touch
 * other component
+* 
+* That's the beauty of removing data access from the component.
 **/
